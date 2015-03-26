@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 mars 2015 12:07:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.lsmp.model.Utilisateur" table="utilisateur" catalog="lsmp" optimistic-lock="version">
+        <id name="idUtilisateur" type="java.lang.Integer">
+            <column name="id_utilisateur" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="typeUtilisateur" class="com.lsmp.model.TypeUtilisateur" fetch="select">
+            <column name="utilisateur_type" not-null="true" />
+        </many-to-one>
+        <property name="identifiantUtilisateur" type="string">
+            <column name="identifiant_utilisateur" length="20" not-null="true" />
+        </property>
+        <property name="mdpUtilisateur" type="string">
+            <column name="mdp_utilisateur" not-null="true" />
+        </property>
+        <property name="mailUtilisateur" type="string">
+            <column name="mail_utilisateur" length="100" not-null="true" />
+        </property>
+        <property name="organisationUtilisateur" type="string">
+            <column name="organisation_utilisateur" length="50" not-null="true" />
+        </property>
+        <property name="nomUtilisateur" type="string">
+            <column name="nom_utilisateur" length="50" not-null="true" />
+        </property>
+        <property name="prenomUtilisateur" type="string">
+            <column name="prenom_utilisateur" length="50" not-null="true" />
+        </property>
+        <set name="missionsForDemandeurId" table="mission" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="demandeur_id" not-null="true" />
+            </key>
+            <one-to-many class="com.lsmp.model.Mission" />
+        </set>
+        <set name="missionsForIntervenantId" table="mission" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="intervenant_id" not-null="true" />
+            </key>
+            <one-to-many class="com.lsmp.model.Mission" />
+        </set>
+        <set name="interventions" table="intervention" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="intervenant_id" not-null="true" />
+            </key>
+            <one-to-many class="com.lsmp.model.Intervention" />
+        </set>
+    </class>
+</hibernate-mapping>

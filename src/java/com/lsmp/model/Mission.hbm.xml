@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 mars 2015 12:07:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.lsmp.model.Mission" table="mission" catalog="lsmp" optimistic-lock="version">
+        <id name="idMission" type="java.lang.Integer">
+            <column name="id_mission" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="typeMission" class="com.lsmp.model.TypeMission" fetch="select">
+            <column name="mission_type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="utilisateurByDemandeurId" class="com.lsmp.model.Utilisateur" fetch="select">
+            <column name="demandeur_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="utilisateurByIntervenantId" class="com.lsmp.model.Utilisateur" fetch="select">
+            <column name="intervenant_id" not-null="true" />
+        </many-to-one>
+        <property name="libelleMission" type="string">
+            <column name="libelle_mission" length="50" not-null="true" />
+        </property>
+        <property name="descriptionMission" type="string">
+            <column name="description_mission" not-null="true" />
+        </property>
+        <property name="statutMission" type="string">
+            <column name="statut_mission" not-null="true" />
+        </property>
+        <property name="prioriteMission" type="string">
+            <column name="priorite_mission" not-null="true" />
+        </property>
+        <property name="deadlineMission" type="timestamp">
+            <column name="deadline_mission" length="19" not-null="true" />
+        </property>
+        <property name="dateCreationMission" type="timestamp">
+            <column name="date_creation_mission" length="19" not-null="true" />
+        </property>
+        <property name="dateModificationMission" type="timestamp">
+            <column name="date_modification_mission" length="19" not-null="true" />
+        </property>
+        <set name="infrastructures" table="infrastructure_mission" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="mission_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.lsmp.model.Infrastructure">
+                <column name="infrastructure_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="interventions" table="intervention" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="intervention_mission" not-null="true" />
+            </key>
+            <one-to-many class="com.lsmp.model.Intervention" />
+        </set>
+    </class>
+</hibernate-mapping>

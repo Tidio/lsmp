@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 mars 2015 12:07:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.lsmp.model.TypeUtilisateur" table="type_utilisateur" catalog="lsmp" optimistic-lock="version">
+        <id name="idTypeUtilisateur" type="java.lang.Integer">
+            <column name="id_type_utilisateur" />
+            <generator class="identity" />
+        </id>
+        <property name="libelle" type="string">
+            <column name="libelle" length="50" not-null="true" />
+        </property>
+        <set name="utilisateurs" table="utilisateur" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="utilisateur_type" not-null="true" />
+            </key>
+            <one-to-many class="com.lsmp.model.Utilisateur" />
+        </set>
+    </class>
+</hibernate-mapping>

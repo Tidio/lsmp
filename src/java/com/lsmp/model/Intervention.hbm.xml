@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 mars 2015 12:07:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.lsmp.model.Intervention" table="intervention" catalog="lsmp" optimistic-lock="version">
+        <id name="idIntervention" type="java.lang.Integer">
+            <column name="id_intervention" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="mission" class="com.lsmp.model.Mission" fetch="select">
+            <column name="intervention_mission" not-null="true" />
+        </many-to-one>
+        <many-to-one name="utilisateur" class="com.lsmp.model.Utilisateur" fetch="select">
+            <column name="intervenant_id" not-null="true" />
+        </many-to-one>
+        <property name="rapportIntervention" type="string">
+            <column name="rapport_intervention" length="65535" not-null="true" />
+        </property>
+        <property name="constatationIntervention" type="string">
+            <column name="constatation_intervention" length="65535" not-null="true" />
+        </property>
+        <property name="dateIntervention" type="timestamp">
+            <column name="date_intervention" length="19" not-null="true" />
+        </property>
+        <property name="dateModificationIntervention" type="timestamp">
+            <column name="date_modification_intervention" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

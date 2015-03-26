@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 mars 2015 12:07:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.lsmp.model.Alerte" table="alerte" catalog="lsmp" optimistic-lock="version">
+        <id name="idAlerte" type="java.lang.Integer">
+            <column name="id_alerte" />
+            <generator class="identity" />
+        </id>
+        <property name="objetAlerte" type="string">
+            <column name="objet_alerte" not-null="true" />
+        </property>
+        <property name="descriptionAlerte" type="string">
+            <column name="description_alerte" length="65535" not-null="true" />
+        </property>
+        <property name="dateAlerte" type="timestamp">
+            <column name="date_alerte" length="19" not-null="true" />
+        </property>
+        <property name="nomAlerte" type="string">
+            <column name="nom_alerte" length="50" not-null="true" />
+        </property>
+        <property name="emailAlerte" type="string">
+            <column name="email_alerte" length="100" not-null="true" />
+        </property>
+        <property name="telAlerte" type="string">
+            <column name="tel_alerte" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

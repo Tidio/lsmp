@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 mars 2015 12:07:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.lsmp.model.Infrastructure" table="infrastructure" catalog="lsmp" optimistic-lock="version">
+        <id name="idInfrastructure" type="java.lang.Integer">
+            <column name="id_infrastructure" />
+            <generator class="identity" />
+        </id>
+        <property name="libelleInfrastructure" type="string">
+            <column name="libelle_infrastructure" length="50" not-null="true" />
+        </property>
+        <property name="descriptionInfrastructure" type="string">
+            <column name="description_infrastructure" not-null="true" />
+        </property>
+        <property name="dateCreationInfrastructure" type="timestamp">
+            <column name="date_creation_infrastructure" length="19" not-null="true" />
+        </property>
+        <set name="missions" table="infrastructure_mission" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="infrastructure_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.lsmp.model.Mission">
+                <column name="mission_id" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
