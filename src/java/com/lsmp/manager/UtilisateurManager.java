@@ -28,4 +28,15 @@ public class UtilisateurManager extends GeneralManager{
         return result;
     }
     
+    public void saveUtilisateur(Utilisateur newUtilisateur){
+        try {
+            session.beginTransaction();
+            session.persist(newUtilisateur);
+            session.getTransaction().commit();
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
