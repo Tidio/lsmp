@@ -5,7 +5,7 @@
  */
 package com.lsmp.manager;
 
-import com.lsmp.model.HibernateUtil;
+import com.lsmp.service.HibernateUtil;
 import org.hibernate.Session;
 
 /**
