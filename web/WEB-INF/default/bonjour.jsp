@@ -13,8 +13,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Column heading</th>
-                                        <th>Column heading</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -23,6 +24,8 @@
                                             <td><c:out value="${utilisateur.idUtilisateur}"/></td>
                                             <td><c:out value="${utilisateur.nomUtilisateur}"/></td>
                                             <td><c:out value="${utilisateur.prenomUtilisateur}"/></td>
+                                            <td><button class="btn-default">Modifier</button>&nbsp;<button class="btn-danger">Supprimer</button></td>
+                                            
                                         </tr>
                                     </c:forEach>
                                 </tbody>

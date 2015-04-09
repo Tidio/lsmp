@@ -25,6 +25,7 @@ public class TypeUtilisateur  implements java.io.Serializable {
 
      private Integer idTypeUtilisateur;
      private String libelle;
+     private String role;
      private Set<Utilisateur> utilisateurs = new HashSet<Utilisateur>(0);
 
     public TypeUtilisateur() {
@@ -68,6 +69,15 @@ public class TypeUtilisateur  implements java.io.Serializable {
     
     public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
         this.utilisateurs = utilisateurs;
+    }
+
+    @Column(name="role", nullable=false, length=30)
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
 

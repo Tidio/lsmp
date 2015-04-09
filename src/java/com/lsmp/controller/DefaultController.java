@@ -9,11 +9,14 @@ package com.lsmp.controller;
  *
  * @author TiDy
  */
-import com.lsmp.manager.UtilisateurManager;
+import com.lsmp.manager.UtilisateurDao;
 import java.text.MessageFormat;
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DefaultController {
 
+    @Autowired
+    UtilisateurDao utilisateurManager;
+    
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("default/index");
@@ -36,7 +43,6 @@ public class DefaultController {
 
     @RequestMapping("/bonjour")
     public ModelAndView helloWorld() {
-        UtilisateurManager utilisateurManager = new UtilisateurManager();
         ModelAndView mv = new ModelAndView("default/bonjour");
         String out = "All User Details: ";
         mv.addObject("utilisateur", utilisateurManager.findAllUsers());
