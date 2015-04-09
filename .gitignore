@@ -2,7 +2,4 @@
 /build/*
 /test/*
 build.xml
-nbproject/build-impl.xml
-nbproject/genfiles.properties
-nbproject/genfiles.properties
-nbproject/genfiles.properties
+nbproject/*
