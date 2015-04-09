@@ -11,6 +11,9 @@
         <property name="libelle" type="string">
             <column name="libelle" length="50" not-null="true" />
         </property>
+        <property name="role" type="string">
+            <column name="role" length="30" not-null="true" />
+        </property>
         <set name="utilisateurs" table="utilisateur" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="utilisateur_type" not-null="true" />
