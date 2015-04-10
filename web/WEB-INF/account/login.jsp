@@ -11,19 +11,34 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="well bs-component">
-            <form:form class="form-horizontal" action="${pageContext.request.contextPath}/account/inscription" method="POST">
+            <form:form class="form-horizontal" action="j_spring_security_check" method="POST">
+                <c:if test="${not empty param.err}">
+                    <div class="alert alert-danger alert-dismissible">
+                        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+                    </div>
+                </c:if>
+                <c:if test="${not empty param.out}">
+                    <div class="alert alert-danger alert-dismissible">
+                        You've logged out successfully.
+                    </div>
+                </c:if>
+                <c:if test="${not empty param.time}">
+                    <div class="alert alert-danger alert-dismissible">
+                        You've been logged out due to inactivity.
+                    </div>
+                </c:if>
                 <fieldset>
                     <legend>Legend</legend>
                     <div class="form-group">
                         <label for="inputIdentifiant" class="col-lg-3 control-label">Identifiant</label>
                         <div class="col-lg-9">
-                            <form:input path="identifiantUtilisateur" cssClass="form-control"/>
+                            <form:input path="username" cssClass="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-lg-3 control-label">Mot de passe</label>
                         <div class="col-lg-9">
-                            <form:password path="mdpUtilisateur" cssClass="form-control"/>
+                            <form:password path="password" cssClass="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
