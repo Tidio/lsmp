@@ -1,3 +1,3 @@
 # lsmp
 
-Don't read
+Projet JAVA/JEE utilisant le framework Spring
