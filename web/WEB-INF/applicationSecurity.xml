@@ -54,7 +54,7 @@
             <!-- username-parameter: the name of the request parameter which contains the username -->
             <!-- password-parameter: the name of the request parameter which contains the password -->
 
-            <security:form-login login-page="/login" default-target-url="/loged" 
+            <security:form-login login-page="/login" default-target-url="/logged" login-processing-url="/login.do"
                         authentication-failure-url="/login?err=1" username-parameter="username" password-parameter="password" />
 					
             <!-- This is where the logout page and process is configured. The logout-url is the URL to send -->

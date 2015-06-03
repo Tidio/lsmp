@@ -1,4 +1,3 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/WEB-INF/layout/header.jsp" %>
 <div class="row">
     <div class="col-lg-12">
@@ -11,7 +10,7 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="well bs-component">
-            <form:form class="form-horizontal" action="j_spring_security_check" method="POST">
+            <form id="form" action="<c:url value='/login.do'/>" method="POST">
                 <c:if test="${not empty param.err}">
                     <div class="alert alert-danger alert-dismissible">
                         <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
@@ -32,13 +31,13 @@
                     <div class="form-group">
                         <label for="inputIdentifiant" class="col-lg-3 control-label">Identifiant</label>
                         <div class="col-lg-9">
-                            <form:input path="username" cssClass="form-control"/>
+                            <input type="text" name="username" value="" class="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-lg-3 control-label">Mot de passe</label>
                         <div class="col-lg-9">
-                            <form:password path="password" cssClass="form-control"/>
+                            <input type="password" name="password" value="" class="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,7 +47,7 @@
                         </div>
                     </div>
                 </fieldset>
-            </form:form>
+            </form>
         </div>
     </div>
 </div>
