@@ -45,6 +45,16 @@ public class CompteController {
         return model;
 
     }
+    
+    @RequestMapping(value = "/account/horray")
+    public ModelAndView created() {
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("/account/horray");
+
+        return model;
+
+    }
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/logged")
@@ -77,7 +87,7 @@ public class CompteController {
     }
 
     @RequestMapping(value = "/account/inscription", method = RequestMethod.POST)
-    public ModelAndView inscriptionSubmit(@ModelAttribute Utilisateur newUtilisateur) {
+    public String inscriptionSubmit(@ModelAttribute Utilisateur newUtilisateur) {
         String generatedSecuredPasswordHash = BCrypt.hashpw(newUtilisateur.getMdpUtilisateur(), BCrypt.gensalt(10));
         newUtilisateur.setMdpUtilisateur(generatedSecuredPasswordHash);
         System.out.println(newUtilisateur.getIdentifiantUtilisateur());
@@ -91,7 +101,8 @@ public class CompteController {
 //        System.out.println(typeUtilisateur.getLibelle());
 //        newUtilisateur.setTypeUtilisateur(typeUtilisateur);
         utilisateurManager.saveUtilisateur(newUtilisateur);
-        ModelAndView mv = new ModelAndView("account/created");
-        return mv;
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/account/horray");
+        return "redirect:/account/horray";
     }
 }

@@ -71,7 +71,7 @@
             <!-- in the order they are configured below. So /** should always be at the bottom of the list. -->
         
             
-            <security:intercept-url requires-channel="https" pattern="/account/inscription*" access="permitAll()" />
+
             <security:intercept-url requires-channel="https" pattern="/account/login*" access="permitAll()" />
             <security:intercept-url requires-channel="https" pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         </security:http>
