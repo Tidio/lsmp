@@ -10,6 +10,7 @@ package com.lsmp.controller;
  * @author TiDy
  */
 import com.lsmp.manager.UtilisateurDao;
+import com.lsmp.model.Infrastructure;
 import java.text.MessageFormat;
 import javax.servlet.http.HttpServletRequest;
 

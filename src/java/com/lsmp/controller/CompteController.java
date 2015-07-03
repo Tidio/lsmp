@@ -8,6 +8,7 @@ package com.lsmp.controller;
 import com.lsmp.manager.TypeUtilisateurDao;
 import com.lsmp.manager.UtilisateurDao;
 import com.lsmp.model.Utilisateur;
+import com.lsmp.model.Infrastructure;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
